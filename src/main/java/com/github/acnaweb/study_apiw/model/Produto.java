@@ -1,4 +1,4 @@
-package com.github.acnaweb.study_apiw;
+package com.github.acnaweb.study_apiw.model;
 
 public class Produto {
     private Long id;
