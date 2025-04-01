@@ -1,8 +1,15 @@
 package com.github.acnaweb.study_apiw.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Produto {
+    
+    @Id
     private Long id;
     private String nome;
+
     public Long getId() {
         return id;
     }
