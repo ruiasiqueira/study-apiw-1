@@ -1,5 +1,7 @@
 package com.github.acnaweb.study_apiw.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,12 +34,16 @@ public class ControllerProduto {
         Produto produto = new Produto();
         return  ResponseEntity.status(200).body(produto);
     }
-
+    
     @GetMapping
-    public ResponseEntity<Produto> find() {
+    public ResponseEntity<List<Produto>> findAll(){
+        return ResponseEntity.ok(produtoService.findAll());
+    }
 
-        Produto produto = new Produto();
-
+    @GetMapping("{id}")
+    public ResponseEntity<Produto> findById(Long id) {
+        Produto produto = produtoService.findById(id);
+        produto = new Produto();
         return ResponseEntity.status(200).body(produto);
     }
 
