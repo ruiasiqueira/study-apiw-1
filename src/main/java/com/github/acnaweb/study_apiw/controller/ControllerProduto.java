@@ -1,9 +1,12 @@
 package com.github.acnaweb.study_apiw.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,10 +37,13 @@ public class ControllerProduto {
     }
 
     @GetMapping
-    public ResponseEntity<Produto> find() {
+    public ResponseEntity<List<Produto>> findAll() {
+        return ResponseEntity.ok(produtoService.findAll());
+    }
 
-        Produto produto = new Produto();
-
+    @GetMapping("{id}")
+    public ResponseEntity<Produto> findById(@PathVariable Long id) {
+        Produto produto = produtoService.findById(id);
         return ResponseEntity.status(200).body(produto);
     }
 
